@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 132919732}
   - component: {fileID: 132919731}
   m_Layer: 0
-  m_Name: Ground
+  m_Name: StartPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1298,7 +1298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beda8cb973ed03e4b9077f4e43c920b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dirz: 0
   speed: 1
+  moveingRight: 1
 --- !u!64 &548291920
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2258,6 +2260,7 @@ GameObject:
   - component: {fileID: 833938182}
   - component: {fileID: 833938187}
   - component: {fileID: 833938189}
+  - component: {fileID: 833938191}
   - component: {fileID: 833938188}
   m_Layer: 0
   m_Name: Player
@@ -2443,6 +2446,20 @@ MonoBehaviour:
   - {fileID: 154948282}
   - {fileID: 948239575}
   live: {fileID: 21300000, guid: e732401f2469b1f4a812fb5f7d53d293, type: 3}
+--- !u!114 &833938191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833938181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e0cb0ef37f60d4db1cf4a99b81a773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementForce: 10
+  _maxVel: 10
 --- !u!1001 &850034956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3885,7 +3902,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659813495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 313.8}
+  m_LocalPosition: {x: 102.32, y: -66.2, z: 313.8}
   m_LocalScale: {x: 3, y: 0, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []

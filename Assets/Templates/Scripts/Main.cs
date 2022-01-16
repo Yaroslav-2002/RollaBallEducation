@@ -17,8 +17,6 @@ public class Main : MonoBehaviour
     private Rigidbody rb;
     private int health;
     private int count;
-    private float movementX;
-    private float movementY;
     private int PickUpsCount;
     private int healthComponent;
 
@@ -33,14 +31,6 @@ public class Main : MonoBehaviour
 
         GameObject[] PickUps = GameObject.FindGameObjectsWithTag("PickUp");
         PickUpsCount = PickUps.Length;
-    }
-
-    private void OnMove(InputValue movementValue)
-    {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-
-        movementX = movementVector.x;
-        movementY = movementVector.y;
     }
 
     private void SetCountText()
@@ -75,8 +65,6 @@ public class Main : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-        rb.AddForce(movement * speed);
     }
 
     private void Jump()
@@ -96,7 +84,7 @@ public class Main : MonoBehaviour
         }
         if (other.gameObject.CompareTag("TheEnd"))
         {
-            rb.transform.position = new Vector3(0, 0.5f, 0);
+            rb.transform.position = new Vector3(101.21f, -66f, 267.12f);
             var healthComponent = rb.GetComponent<Health>();
             if (healthComponent != null)
             {
