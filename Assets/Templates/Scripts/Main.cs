@@ -20,11 +20,15 @@ public class Main : MonoBehaviour
     private int PickUpsCount;
     private int healthComponent;
 
+    private Vector3 _startPos;
+
     // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
+
+        _startPos = transform.position;
 
         SetCountText();
         winTextObject.SetActive(false);
@@ -84,7 +88,7 @@ public class Main : MonoBehaviour
         }
         if (other.gameObject.CompareTag("TheEnd"))
         {
-            rb.transform.position = new Vector3(101.21f, -66f, 267.12f);
+            rb.transform.position = new Vector3(-8.30000114f, -0.870000839f, -11.7400093f);
             var healthComponent = rb.GetComponent<Health>();
             if (healthComponent != null)
             {

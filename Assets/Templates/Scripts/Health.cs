@@ -33,16 +33,8 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             loseTextObject.enabled = true;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("TheEnd"))
-        {
-            transform.position = new Vector3(0, 0.5f, 0);
         }
     }
 }
