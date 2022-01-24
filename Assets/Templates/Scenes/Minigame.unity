@@ -1280,7 +1280,7 @@ GameObject:
   - component: {fileID: 548291920}
   - component: {fileID: 548291918}
   m_Layer: 0
-  m_Name: tiles
+  m_Name: MovingPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1295,12 +1295,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 548291917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beda8cb973ed03e4b9077f4e43c920b3, type: 3}
+  m_Script: {fileID: 11500000, guid: a953f35b66716ac4db87d0ec8bd5763f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dirz: 0
-  speed: 1
-  moveingRight: 1
+  _distance: 3
+  _movingSpeed: 1
+  _currentPostion: {x: 0, y: 0, z: 0}
 --- !u!64 &548291920
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1373,9 +1373,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548291917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 101.21001, y: -60.4, z: 302.35}
-  m_LocalScale: {x: 0.3, y: 1, z: 0.3}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 101.9673, y: -60.4, z: 299.74}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 27
@@ -2425,7 +2425,6 @@ MonoBehaviour:
   speed: 10
   countText: {fileID: 57229448}
   winTextObject: {fileID: 540491082}
-  jumpForce: 200
 --- !u!114 &833938190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2460,6 +2459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementForce: 10
   _maxVel: 10
+  jumpForce: 180
 --- !u!1001 &850034956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3902,7 +3902,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659813495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 102.32, y: -66.2, z: 313.8}
+  m_LocalPosition: {x: 102.32, y: -71.9, z: 313.8}
   m_LocalScale: {x: 3, y: 0, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4085,7 +4085,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1756124940}
-  - component: {fileID: 1756124941}
   m_Layer: 0
   m_Name: PickUp Parent
   m_TagString: Untagged
@@ -4116,23 +4115,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1756124941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756124939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73bcba6c7e6dcab4abbf5317913275b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  t: 0
-  Amp: 0.25
-  Freq: 3
-  Offset: 0
-  StartPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1777221057
 GameObject:
   m_ObjectHideFlags: 0

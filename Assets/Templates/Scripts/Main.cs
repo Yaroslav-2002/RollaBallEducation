@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -11,8 +12,6 @@ public class Main : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
-    private bool isGrounded;
-    public int jumpForce;
 
     private Rigidbody rb;
     private int health;
@@ -36,6 +35,7 @@ public class Main : MonoBehaviour
         GameObject[] PickUps = GameObject.FindGameObjectsWithTag("PickUp");
         PickUpsCount = PickUps.Length;
     }
+    
 
     private void SetCountText()
     {
@@ -56,25 +56,10 @@ public class Main : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            Jump();
-        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-    }
-
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-    }
-
-    private void Jump()
-    {
-        isGrounded = false;
-        rb.AddForce(new Vector3(0, jumpForce, 0));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -88,17 +73,14 @@ public class Main : MonoBehaviour
         }
         if (other.gameObject.CompareTag("TheEnd"))
         {
-            rb.transform.position = new Vector3(-8.30000114f, -0.870000839f, -11.7400093f);
+            rb.transform.position = _startPos;
             var healthComponent = rb.GetComponent<Health>();
             if (healthComponent != null)
             {
                 healthComponent.TakeDamage(1);
             }
         }
+        
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        isGrounded = true;
-    }
+    
 }

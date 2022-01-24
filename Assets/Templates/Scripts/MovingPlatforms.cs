@@ -1,27 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class NewBehaviourScript : MonoBehaviour
+public class MovingPlatforms : MonoBehaviour
 {
-    [SerializeField] private Vector3 _startPos;
-    [SerializeField] private Vector3 _endPos;
-    [SerializeField] private decimal _movingSpeed;
+    [SerializeField] private float _distance;
+    [SerializeField] private float _movingSpeed;
+    [SerializeField] private Vector3 _currentPostion;
 
-    private bool crossLimit;
+    private Rigidbody rb;
+    private bool movingRight;
 
-    private void Awake() => _startPos = transform.position;
+    private void Awake() => rb = GetComponent<Rigidbody>();
+
+    private Vector3 GetPosition() => _currentPostion = rb.position;
 
     // Update is called once per frame
     private void Update()
     {
-        if (transform.position.z >= _startPos.z)
+        if (transform.position.z <= 298.73)
         {
-            transform.position = _endPos;
+            movingRight = true;
+        }
+        else if (transform.position.z >= 306.36)
+        {
+            movingRight = false;
+        }
+
+        if (movingRight)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Time.deltaTime * _movingSpeed);
         }
         else
         {
-            transform.position = _startPos;
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - Time.deltaTime * _movingSpeed);
         }
     }
 }

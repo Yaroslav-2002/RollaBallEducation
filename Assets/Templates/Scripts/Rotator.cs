@@ -9,18 +9,22 @@ public class Rotator : MonoBehaviour
     public float Freq = 3;
     public float Offset = 0;
     public Vector3 StartPos;
+    private Rigidbody rb;
+
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         StartPos = transform.position;
     }
 
-    private void FixedUpdate()
+    private void Update()
+
     {
         t += Time.deltaTime;
         Offset = Amp * Mathf.Sin(t * Freq);
 
-        transform.position = StartPos + new Vector3(0, Offset, 0);
-        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
+        rb.transform.position =  StartPos + new Vector3(0, Offset, 0);
+        rb.transform.Rotate(new Vector3(45, 45, 45) * Time.deltaTime);
     }
 }
