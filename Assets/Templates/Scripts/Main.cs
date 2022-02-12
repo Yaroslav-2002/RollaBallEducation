@@ -34,16 +34,29 @@ public class Main : MonoBehaviour
 
         GameObject[] PickUps = GameObject.FindGameObjectsWithTag("PickUp");
         PickUpsCount = PickUps.Length;
+
+        rb.isKinematic = false;
     }
-    
 
     private void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= PickUpsCount)
+        if (count == PickUpsCount)
         {
-            winTextObject.SetActive(true);
+            
+            
+            StartCoroutine("RemoveTextObject");
         }
+        // winTextObject.SetActive(false);
+    }
+
+    IEnumerator RemoveTextObject()
+    {
+        Debug.Log("Set true");
+        winTextObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        Debug.Log("Waiting");
+        winTextObject.SetActive(false);
     }
 
     private void SetLoseText()
@@ -60,6 +73,16 @@ public class Main : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        if (rb.transform.position.y < -75)
+        {
+            Debug.Log("90");
+            rb.transform.position = _startPos;
+            var healthComponent = rb.GetComponent<Health>();
+            if (healthComponent != null)
+            {
+                healthComponent.TakeDamage(1);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -68,19 +91,9 @@ public class Main : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count++;
+            Debug.Log("Count:"+count);
 
             SetCountText();
         }
-        if (other.gameObject.CompareTag("TheEnd"))
-        {
-            rb.transform.position = _startPos;
-            var healthComponent = rb.GetComponent<Health>();
-            if (healthComponent != null)
-            {
-                healthComponent.TakeDamage(1);
-            }
-        }
-        
     }
-    
 }

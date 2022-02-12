@@ -34,6 +34,7 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            rb.isKinematic = true;
             loseTextObject.enabled = true;
         }
     }
